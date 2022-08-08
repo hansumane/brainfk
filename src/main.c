@@ -24,8 +24,8 @@ int main(int argc, char **argv)
 
 #if !defined(RELEASE)
     for (size_t i = 0; i < 4; ++i) {
-        for (size_t j = 0; j < 16; ++j)
-            printf("%3hhu, ", arr[i]);
+        for (size_t j = 16 * i; j < 16 * (i + 1); ++j)
+            printf("%3hhu, ", arr[j]);
         putchar('\n');
     }
 #endif /* RELEASE */
