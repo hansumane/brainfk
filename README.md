@@ -29,6 +29,15 @@ user@host:~/brainfk$ echo -n "CAB\0" | ./brainfk examples/bubble_sort.bf
 ABC
 ```
 
+Or you can actually input Ctrl+@ to insert 0 to stdin. On US
+keyboard it's Ctrl+Shift+2
+
+```
+user@host:~/brainfk$ ./brainfk examples/bubble_sort.bf
+CAB^@
+ABC
+```
+
 ## Issues
 
 I am not sure if this program works 100% correctly, so
