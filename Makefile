@@ -7,12 +7,12 @@ $(BIN): src/main.c src/lib.h
 
 install: $(BIN)
 	env mkdir -p ~/.local/bin
-	env cp -f $(BIN) ~/.local/bin
+	env mv -f $(BIN) ~/.local/bin
 
 clean:
 	env rm -f $(BIN)
 
-uninstall: clean
+uninstall:
 	env rm -f ~/.local/bin/$(BIN)
 
 help:
