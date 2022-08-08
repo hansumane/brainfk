@@ -16,7 +16,7 @@ Provide filename with BrainF#ck source code,
 and the program will interpret it.
 
 ```
-user@host:~/brainfk$ ./brainfk hello.bf
+user@host:~/brainfk$ ./brainfk examples/hello.bf
 Hello World!
 ```
 
