@@ -1,13 +1,15 @@
 # BrainF#ck interpreter in C
 
-## How to build
+## How to build & install
 
 Compile with *compiler*, *flags* and **make**,
-"gcc" is default compiler, and "-std=gnu99 -O2"
-are default flags.
+"cc" is default compiler, and "-std=gnu99 -O2"
+are default flags. Programs are installed to
+**~./local/bin/**, so please add this folder
+to your PATH
 
 ```
-user@host:~/brainfk$ make CC=<compiler> FLAG=<flags>
+user@host:~/brainfk$ make install CC=<compiler> FLAG=<flags>
 ```
 
 ## Usage
