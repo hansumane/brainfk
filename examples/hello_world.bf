@@ -1,6 +1,6 @@
-[ hello_world.bf -- prints "Hello World!"
+[ hello_world.bf -- prints "Hello World!".
   The source file contains description
-  and bytes as they are being changed ]
+  and bytes as they are being changed. ]
 
 {0} {0} {0} {0} {0} {0} ___
 ^
