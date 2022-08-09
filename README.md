@@ -32,12 +32,19 @@ ABC
 ```
 
 Or you can actually input Ctrl+@ to insert 0 to stdin. On US
-keyboard it's Ctrl+Shift+2
+layout it's Ctrl+Shift+2. It may not work on your terminal!
 
 ```
 user@host:~/brainfk$ ./brainfk examples/bubble_sort.bf
 CAB^@
 ABC
+```
+
+If you need to input small values that can not be
+presented as ASCII characters, then try using printf:
+
+```
+user@host:~/brainfk$ printf "\02\04" | ./brainfk examples/multiply.bf
 ```
 
 ## Issues
