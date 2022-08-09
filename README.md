@@ -14,6 +14,16 @@ user@host:~/brainfk$ make install CC=<compiler> FLAG=<flags>
 
 ## Usage
 
+### Flags
+
+The program supports two flags for now: **-d** or **--debug**
+and **-n** or **--no-newline**. The debug flag prints 64 first
+bytes to stdout after program has finished. The no-newline flag
+prevents printing newline character after program has finished
+if the last printed character is not newline character.
+
+### Main usage
+
 Provide filename with BrainF#ck source code,
 and the program will interpret it.
 
