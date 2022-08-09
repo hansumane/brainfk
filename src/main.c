@@ -8,6 +8,7 @@ int
 main (int argc, char **argv)
 {
   int debug_flag = 0;
+  unsigned debug_amount = 1;
   int no_newline_flag = 0;
   char *filename, *cmd = NULL;
   char arr[ARRCAP] = { };
@@ -19,14 +20,26 @@ main (int argc, char **argv)
       exit (1);
     }
   else
-    for (int i = 0; i < argc; ++i)
+    for (int i = 1; i < argc; ++i)
       {
-        if (!strcmp (argv[i], "-d") || !strcmp (argv[i], "--debug"))
-          debug_flag = 1;
-        else if (!strcmp (argv[i], "-n") || !strcmp (argv[i], "--no-newline"))
-          no_newline_flag = 1;
-        else if (argv[i][0] != '-')
+        if (argv[i][0] != '-')
           filename = argv[i];
+        else if (strlen (argv[i]) == 2)
+          switch (argv[i][1])
+            {
+            case 'd':
+              debug_flag = 1;
+              break;
+            case 'n':
+              no_newline_flag = 1;
+              break;
+            }
+        else if (strlen (argv[i]) >= 3)
+          if (argv[i][0] == '-' && argv[i][1] == 'd' && argv[i][2] != '\0')
+            {
+              debug_flag = 1;
+              debug_amount = (unsigned) atoi (&argv[i][2]);
+            }
       }
 
   rdcmds (&cmd, filename);
@@ -35,7 +48,7 @@ main (int argc, char **argv)
     putchar ('\n');
 
   if (debug_flag)
-    for (size_t i = 0; i < 4; ++i)
+    for (size_t i = 0; i < debug_amount; ++i)
       {
         for (size_t j = 16 * i; j < 16 * (i + 1); ++j)
           printf ("%3hhu, ", arr[j]);
