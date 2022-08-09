@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "lib.h"
 #define ARRCAP 30000
-#define RELEASE
+// #define RELEASE
 
 int
 main (int argc, char **argv)
