@@ -24,7 +24,7 @@ Hello World!
 
 If your program requires input, you should
 probably append null-terminator at the end of input,
-as almost all of brainf#ck programs read the input this way:
+as almost all of BrainF#ck programs read the input this way:
 
 ```
 user@host:~/brainfk$ echo -n "CAB\0" | ./brainfk examples/bubble_sort.bf
@@ -40,7 +40,7 @@ CAB^@
 ABC
 ```
 
-If you need to input small values that can not be
+If you need to input some small values that can not be
 presented as ASCII characters, then try using printf:
 
 ```
