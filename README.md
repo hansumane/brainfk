@@ -62,7 +62,8 @@ If you need to input some small values that can not be
 presented as ASCII characters, then try using printf:
 
 ```
-user@host:~/brainfk$ printf "\02\04" | ./brainfk examples/multiply.bf
+user@host:~/brainfk$ printf "\2\4" | ./brainfk examples/multiply.bf -d  # or
+user@host:~/brainfk$ printf "\x2\x4" | ./brainfk examples/multiply.bf -d
 ```
 
 ## Issues
