@@ -18,16 +18,17 @@ user@host:~/brainfk$ make install CC=<compiler> FLAG=<flags>
 
 The program supports two flags for now: **-d*n*** for *debug*
 and **-n** for *no newline*. The debug flag prints 16 * n first
-bytes to stdout after program has finished. The no-newline flag
-prevents printing newline character after program has finished
-if the last printed character is not newline character.
-Default n value for **-d*n*** is 1
+bytes and final pointer position in array to stdout after program
+has finished. The no-newline flag prevents printing newline character
+after program has finished if the last printed character is not
+newline character. Default n value for **-d*n*** is 1
 
 ```
 user@host:~/brainfk$ ./brainfk examples/hello.bf -d5  # or
 user@host:~/brainfk$ ./brainfk -d5 examples/hello.bf
 Hello World!
   0,  33,  72,  87, 100,   0,   0 . . .
+/final pos: [1]/
 ```
 
 ### Main usage

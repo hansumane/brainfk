@@ -1,4 +1,4 @@
-static char lastput = 0;
+static char lastput = '\n';
 
 struct ret_t
 {
@@ -6,20 +6,20 @@ struct ret_t
 };
 
 void
-rdcmds (char **to, const char *filename)
+rdcmds(char **to, const char *filename)
 {
   char buffer;
   FILE *input;
   size_t i = 0, cmdsiz = 0;
   size_t bopen = 0, bclose = 0;
 
-  if (!(input = fopen (filename, "r")))
+  if (!(input = fopen(filename, "r")))
     {
-      fprintf (stderr, "No such file: %s\n", filename);
-      exit (1);
+      fprintf(stderr, "No such file: %s\n", filename);
+      exit(1);
     }
 
-  while (fread (&buffer, sizeof (char), 1, input))
+  while (fread(&buffer, sizeof(char), 1, input))
     switch (buffer)
       {
       case '[':
@@ -35,21 +35,21 @@ rdcmds (char **to, const char *filename)
       case ',':
         ++cmdsiz;
       }
-  fclose (input);
+  fclose(input);
 
   if (bopen != bclose)
     {
-      fprintf (stderr, "Syntax error! the amount of open brackets (%zu)\n"
-               "is not the same as the amount of closing brackets (%zu)\n",
-               bopen, bclose);
-      exit (2);
+      fprintf(stderr, "Syntax error! the amount of open brackets (%zu)\n"
+              "is not the same as the amount of closing brackets (%zu)\n",
+              bopen, bclose);
+      exit(2);
     }
 
-  input = fopen (filename, "r");
-  free (*to);
-  *to = (char *) calloc (cmdsiz + 1, sizeof (char));
+  input = fopen(filename, "r");
+  free(*to);
+  *to = (char *) calloc(cmdsiz + 1, sizeof(char));
 
-  while (fread (&buffer, sizeof (char), 1, input))
+  while (fread(&buffer, sizeof(char), 1, input))
     switch (buffer)
       case '>':
       case '<':
@@ -63,7 +63,7 @@ rdcmds (char **to, const char *filename)
 }
 
 struct ret_t
-skip (char *cmd, char *arr)
+skip(char *cmd, char *arr)
 {
   struct ret_t tmp;
   size_t obmnt = 0;
@@ -82,7 +82,7 @@ skip (char *cmd, char *arr)
 }
 
 struct ret_t
-go (char *cmd, char *arr)
+go(char *cmd, char *arr)
 {
   struct ret_t tmp;
   while (*cmd != '\0' && *cmd != ']')
@@ -103,25 +103,25 @@ go (char *cmd, char *arr)
           break;
         case '.':
           lastput = *arr;
-          putchar (lastput);
-          fflush (stdout);
+          putchar(lastput);
+          fflush(stdout);
           break;
         case ',':
-          *arr = getchar ();
+          *arr = getchar();
           break;
         case '[':
           if (*arr)
             {
               while (*arr)
                 {
-                  tmp = go (cmd + 1, arr);
+                  tmp = go(cmd + 1, arr);
                   arr = tmp.arr;
                 }
               cmd = tmp.cmd;
             }
           else
             {
-              tmp = skip (cmd, arr);
+              tmp = skip(cmd, arr);
               cmd = tmp.cmd;
               arr = tmp.arr;
             }
