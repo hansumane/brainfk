@@ -50,12 +50,15 @@ main(int argc, char **argv)
     putchar('\n');
 
   if (debug_flag)
-    for (size_t i = 0; i < debug_amount; ++i)
-      {
-        for (size_t j = 16 * i; j < 16 * (i + 1); ++j)
-          printf("%3hhu, ", arr[j]);
-        printf("\n/final pos: [%zu]/\n", done.arr - arr);
-      }
+    {
+      for (size_t i = 0; i < debug_amount; ++i)
+        {
+          for (size_t j = 16 * i; j < 16 * (i + 1); ++j)
+            printf("%3hhu, ", arr[j]);
+          putchar('\n');
+        }
+      printf("/final pos: [%zu]/\n", done.arr - arr);
+    }
 
   return 0;
 }
